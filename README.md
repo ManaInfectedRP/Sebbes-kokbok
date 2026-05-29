@@ -53,7 +53,7 @@ Kokboken/
 │   └── Dockerfile
 │
 ├── k8s/                    Kubernetes manifests (optional)
-├── render.yml              Render Blueprint (frontend static site only)
+├── render.yaml             Render Blueprint (frontend static site only)
 ├── docker-compose.yml      Local full-stack development
 └── docs/architecture.md
 ```
