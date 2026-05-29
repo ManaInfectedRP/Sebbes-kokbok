@@ -1,7 +1,7 @@
 services:
   # ── Frontend static site ───────────────────────────────────────
   - type: web
-    name: kokboken-frontend
+    name: Sebbes-kokbok
     runtime: static
     plan: free
     rootDir: frontend
