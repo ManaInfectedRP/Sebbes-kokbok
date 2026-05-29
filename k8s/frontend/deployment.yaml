@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kokboken-frontend
+  namespace: kokboken
+  labels:
+    app: kokboken-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kokboken-frontend
+  template:
+    metadata:
+      labels:
+        app: kokboken-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: kokboken-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 20m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi

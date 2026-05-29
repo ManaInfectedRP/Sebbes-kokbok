@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  api:
+    build: ./api
+    container_name: kokboken-api
+    ports:
+      - '3001:3001'
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: kokboken-frontend
+    ports:
+      - '8080:80'
+    depends_on:
+      - api
+    restart: unless-stopped
